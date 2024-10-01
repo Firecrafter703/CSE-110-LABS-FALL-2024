@@ -4,13 +4,25 @@
 
 <style>
 
-dev
+div
 {
-    background-color: greenyellow;
-    height: 200px;
+   
+    display: inline-block;
+    width: 100%;
+    
+   
+}
+
+
+div.static {
+  position: static;
+ 
 }
 
 </style>
+
+
+
 
 
 <body>
@@ -18,22 +30,66 @@ dev
 
 
 <img src = "UCSanDiego.JPG" alt = "UCSD">
-<a href="#section1">Go to Section 1</a>
-<a href="#section2">Go to Section 2</a>
-<dev>
 
-<h1 id = "section1">Section 1</h1>
+<div id = "navbar">
+
+    <li><a href="#section1">Section 1</a></li>
+    <li><a href="#section2">Section 2</a></li>
+    <li><a href="#section3">Section 3</a></li>
+
+</div>
+
+<div class = "s1">
+
+    <h1 id = "section1"> Section 1</h1>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <p class = "static">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 
 
-<link rel="stylesheet" href="styles.css">
-<img src = "Tritons.JPG" alt = "Tritons">
+</div>
 
-</dev>
+<div class = "s2" style="position: relative">
 
-<h2 id = "section2">Section 2</h2>
-<link rel="stylesheet" href="styles.css">
-<img src = "colleges.JPG" alt = "listOfColleges">
+    <h2 id = "section2" style="color: white">Section 2</h2>
 
+    <link rel="stylesheet" href="styles.css">
+
+    <p style="positon: relative; bottom: 0; width:100%; text-align: bottom;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+
+  
+</div>
+
+
+<div class = "s3">
+
+    <h3 id = "section3">Section 3</h3>
+
+    <link rel="stylesheet" href="styles.css">
+    
+    <div class="row">
+        <div class="column" >
+            
+            <h2>Column 1</h2>
+            <p style = "color:white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="column">
+            <h2>Column 2</h2>
+            <p style = "color:white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="column">
+            <h2>Column 3</h2>
+            <p style = "color:white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="column">
+            <h2>Column 4</h2>
+            <p style = "color:white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+
+</div>
 </body>
 </html>
