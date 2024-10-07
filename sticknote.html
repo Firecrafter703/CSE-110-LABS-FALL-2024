@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang = eng>
+<head>
+<meta charset="UTF-8">
+<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+<title> Form with JavaScript Inputs</title>
+<style>
+    body
+    {
+        font-family:Arial, sans-serif;
+        margin: 20px;
+    }
+    .container
+    {
+        max-width:400px;
+        margin: 0 auto;
+    }
+    label,
+    input
+    {
+        display:block;
+        margin-bottom:10px;
+    }
+    button
+    {
+        margin-top: 10px;
+    }
+    .result
+    {
+        margin-top: 20px;
+    }
+
+
+</style>
+
+</head>
+
+<body>
+    <div class = "container">
+        <h2>Create your Sticky Note!</h2>
+        <form id="userForm">
+            <label for = "title">Title:</label>
+            <!-- testbox -->
+            <input type="text" id = "title" name="title" required> 
+            <label for = "content">Content:</label>
+            <input type="text" id = "content" name="content" required>
+            <label for = "notetype">Label Your Note:</label>
+            <select name = type id = "notetype">
+                <option value="">--Choose an option--</option>
+                <option value="Personal">Personal</option>
+                <option value="Work">Work</option>
+                <option value="Social">Social</option>
+                <option value="College">College</option>
+            </select>
+            <button type = "submit">Submit</button>
+        </form>
+
+        <div class="result" id = "result"></div>
+    </div>
+
+    <script>
+        //submit is the event thats being listened for
+        document.getElementById("userForm").addEventListener("submit", function (event) {event.preventDefault();
+
+            //get input values
+            //here it reads whats in the textbox, and buts that in the const title,content,
+            const title = document.getElementById("title").value;
+            const titleLength = title.length;
+            const content = document.getElementById("content").value;
+            const contentLength = content.length;
+            const notetype = document.getElementById("notetype").value;
+
+
+            //javascript alert
+
+            if(titleLength > 50 || contentLength > 50)
+            {
+                //use a javascript popup box
+                alert("Cannot Exceed 50 characters");
+            }
+            else
+            {
+                //Display result
+                const resultDiv = document.getElementById("result");
+                resultDiv.innerHTML = `<h3>Submitted Information</h3> <p>Title: ${title}</p>`;
+                resultDiv.innerHTML += `<p>Content: ${content}</p>`;
+                resultDiv.innerHTML += `<p>Label: ${notetype}</p>`;
+                }
+        });
+
+
+    document.getElementById("title").addEventListener("focus", function ()
+    {
+        this.style.backgroundColor = "#e0f7fa"; //light blue background on focus!
+    });
+    document.getElementById("title").addEventListener("blur", function ()
+    {
+        this.style.backgroundColor = "#"; //background reset on blur
+    });
+
+    document.getElementById("content").addEventListener("focus", function ()
+    {
+        this.style.backgroundColor = "#e0f7fa"; //light blue background on focus!
+    });
+    document.getElementById("content").addEventListener("blur", function ()
+    {
+        this.style.backgroundColor = "#"; //background reset on blur
+    });
+
+    //some cases eventHandling is a subset of eventListeners, sometimes interchangable
+    function characterLimit()
+    {
+
+    }
+//react function compoments are simple tools, class compoments area  toolbex that can be complex that is good for backwards compatability
+ 
+    </script>
+</body>
+
+</html>
