@@ -3,7 +3,7 @@ import { ThemeContext, themes } from "./themeContext";
 
 import { useContext } from 'react';
 
-function ToggleTheme() {
+export function ToggleTheme() {
     const [currentTheme, setCurrentTheme] = useState(themes.light);
    
     const toggleTheme = () => {
@@ -13,13 +13,14 @@ function ToggleTheme() {
     return (
       <ThemeContext.Provider value={currentTheme}>
         <button onClick={toggleTheme}> Toggle Theme </button>
-        <ClickCounter />
+        {/* <ClickCounter />*/ }
       </ThemeContext.Provider>
     );
    }
    
-   export default ToggleTheme;
    
+
+
 export function ClickCounter() {
  const [count, setCount] = useState(0);
 

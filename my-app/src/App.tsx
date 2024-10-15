@@ -3,8 +3,23 @@ import logo from './logo.svg';
 import './App.css';
 import { Label, Note } from "./types"; 
 import { dummyNotesList } from "./constants"; 
-import { ClickCounter} from "./hooksExercise";
-
+import { ClickCounter, } from "./hooksExercise";
+import { ThemeContext, themes } from "./themeContext";
+import { useContext } from 'react';
+ function ToggleTheme() {
+    const [currentTheme, setCurrentTheme] = useState(themes.light);
+   
+    const toggleTheme = () => {
+      setCurrentTheme(currentTheme === themes.light ? themes.dark : themes.light);
+    };
+   
+    return (
+      <ThemeContext.Provider value={currentTheme}>
+        <button onClick={toggleTheme}> Change Favorite Button color </button>
+        {/* <ClickCounter />*/<Favorite/> }
+      </ThemeContext.Provider>
+    );
+   }
  
 function Favorite()
 {
@@ -14,10 +29,10 @@ function Favorite()
     // Toggle the favorite state
     setIsFavorite(!isFavorite);
   };
-
+  const theme = useContext(ThemeContext);
   return (
 	
-    <button onClick={toggleFavorite}>
+    <button onClick={toggleFavorite}  style={{ background: theme.foreground, color: theme.background }}>
       {isFavorite ? 'favorite' : 'unfavorite'}
     </button>
    
@@ -49,7 +64,9 @@ function App() {
  
 
 
+  //notes is the list of all the notes we have, setNotes updates the value itself
 const [notes, setNotes] = useState(dummyNotesList); 
+
 const initialNote = {
    id: -1,
    title: "",
@@ -82,11 +99,33 @@ const [createNote, setCreateNote] = useState(initialNote);
 
 const [selectedNote, setSelectedNote] = useState<Note>(initialNote);
 
+                      //note: Note. This is TS, so note should be of type NOTE variableName: Type
+const handleNoteClick = (note: Note) =>
+	{
+		setSelectedNote(note);
+	}
+
+
 const removeNote = () =>
 	{
          setSelectedNote(initialNote);
 
 	}
+
+
+const testFunction = (event: React.MouseEvent, nID :number) =>
+	{
+		event.stopPropagation();
+		const updateNotes = notes.filter(n => nID !== n.id);
+		setNotes(updateNotes);
+	
+	}
+
+
+const toggleLight = () =>
+{
+
+}
 
 
 const createNoteHandler = (event: React.FormEvent) => {
@@ -95,6 +134,7 @@ const createNoteHandler = (event: React.FormEvent) => {
   console.log("content: ", createNote.content);
   console.log("button: ", createNote.button);
   console.log("fav", createNote.favorite);
+  //note, this may be why on createNotes affect the ids of the delete function....
   createNote.id = notes.length + 1;
   setNotes([createNote, ...notes]);
   setCreateNote(initialNote);
@@ -144,27 +184,30 @@ const createNoteHandler = (event: React.FormEvent) => {
   	</form>
 
 	
-
   	<div className="notes-grid">
+	 
+	    {/* notes.map acts as a for loop for each indivudual note	 */}
     	{notes.map((note) => (
       	<div
         	key={note.id}
         	className="note-item"
+			//whenever i click on a particular note, the function is automatically executed(For this div)
+			onClick={()=>handleNoteClick(note)}
       	>
         	<div className="notes-header">
-          	<button>x</button>
+				{/* (event) is needed because thats the object that has the data about the event.
+				we need to pass the event too in the parameter */}
+           	<button onClick = {(event) => testFunction(event,note.id)}>x</button>
 
         	</div>
         	<h2 contentEditable = "true"> {note.title} </h2>
             <p contentEditable = "true"> {note.content} </p>
         	<p contentEditable = "true"> {note.label } </p>
 			
-
-			<button onClick={toggleFavorite}>
-            {isFavorite ? 'favorite' : 'unfavorite'}
-             </button>
+			<ToggleTheme/>
 			
-			<Favorite/>
+			
+			
       	</div>
 		
 		 

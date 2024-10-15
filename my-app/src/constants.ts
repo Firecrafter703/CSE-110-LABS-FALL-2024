@@ -6,7 +6,7 @@ import { useState } from "react";
 export const dummyNotesList = [
    {
     id: 1,
-       title: "note 1 title ♡",
+       title: "note 1 tietle ♡",
        content: "note 1 content",
        label: Label.other,
        button: "♡",
